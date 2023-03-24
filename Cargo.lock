@@ -157,6 +157,7 @@ dependencies = [
  "base64",
  "rustls",
  "rustls-native-certs",
+ "rustls-pemfile",
 ]
 
 [[package]]
