@@ -1,11 +1,21 @@
 This repo demonstrates a crash I have found in `v0.21.0-alpha.1` of `rustls`. When using it with `rustls-native-certs` to get the CAs trusted by the system on macOS Ventura, I found it fails to parse when reading one particular certificate. The same certificate is parsed by `v0.20.8` without errors.
 
-The certificate is in the repo at `crash.pem`.
+## Running
 
-The OpenSSL output for this is as follows:
+To try the system keychain:
+
+`cargo run system`
+
+To use the embedded copy of the failing certificate:
+
+`cargo run`
+
+## Cert
+
+The failing certificate is in the repo at `crash.pem`. The OpenSSL output for this is as follows:
 
 ```
-[nix-shell:~/rustls-test]$ openssl x509 -in crash.pem -noout -text
+$ openssl x509 -in crash.pem -noout -text
 Certificate:
     Data:
         Version: 3 (0x2)
